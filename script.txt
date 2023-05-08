@@ -1,0 +1,20 @@
+3. Definir uma subconsulta para retornar o nome do pet cujo dono mora no bairro Vila Nova:
+
+
+SELECT nome
+FROM Animal
+WHERE coddono IN (SELECT coddono
+  FROM Dono
+  WHERE bairro = 'Vila Nova'
+);
+
+4. Definir uma consulta com join para retornar os donos (mesmo que não tenham pets associados) e a quantidade de pets que cada um possui.
+
+SELECT D.coddono, D.nome AS nome_dono, D.bairro, COUNT(A.codanimal) AS quantidade_pets
+FROM Dono D
+LEFT JOIN Animal A ON D.coddono = A.coddono
+GROUP BY D.coddono, D.nome, D.bairro;
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<
